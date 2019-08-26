@@ -1,0 +1,89 @@
+@url = http://localhost:5000/api
+
+
+### Add a parcel
+# @name add_parcel
+POST {{url}}/parcels
+Content-Type: application/json
+
+{
+  "size": "normal",
+  "name": "Parcel #1",
+  "address": "Street 1"
+}
+
+@parcelId = {{add_parcel.response.headers.Resource-ID}}
+
+### Browse parcels
+GET {{url}}/parcels
+
+### Get parcel details
+GET {{url}}/parcels/{{parcelId}}
+
+### Delete a parcel
+DELETE {{url}}/parcels/{{parcelId}}
+
+
+@parcels =  ['{{parcelId}}']
+
+### Start the delivery
+# @name start_delivery
+POST {{url}}/deliveries
+Content-Type: application/json
+
+{
+  "parcels": {{parcels}}
+}
+
+@deliveryId = {{start_delivery.response.headers.Resource-ID}}
+
+### Get deliveries
+GET {{url}}/deliveries
+
+### Get the delivery details
+GET {{url}}/deliveries/{{deliveryId}}
+
+### Complete the delivery
+POST {{url}}/deliveries/{{deliveryId}}/complete
+Content-Type: application/json
+
+{
+}
+
+### Cancel the delivery
+DELETE {{url}}/deliveries/{{deliveryId}}
+Content-Type: application/json
+
+{
+  "reason": "Lost parcels."
+}
+
+@addresses = ['Street 1', 'Downtown 2', 'Crossing 3']
+
+### Get the route
+GET {{url}}/routing?addresses={{addresses}}
+
+### Sign up
+POST {{url}}/users/sign-up
+Content-Type: application/json
+
+{
+  "email": "user1@mailinator.com",
+  "password": "secret"
+}
+
+### Sign in
+# @name sign_in
+POST {{url}}/users/sign-in
+Content-Type: application/json
+
+{
+  "email": "user1@mailinator.com",
+  "password": "secret"
+}
+
+@accessToken = {{sign_in.response.body.$.accessToken}}
+
+### Get account
+GET {{url}}/users/me
+Authorization: Bearer {{accessToken}}

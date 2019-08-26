@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\NPost.Shared\NPost.Shared.csproj" />
+      <ProjectReference Include="..\..\Parcels\NPost.Modules.Parcels.Shared\NPost.Modules.Parcels.Shared.csproj" />
+      <ProjectReference Include="..\NPost.Modules.Deliveries.Core\NPost.Modules.Deliveries.Core.csproj" />
+      <ProjectReference Include="..\NPost.Modules.Deliveries.Shared\NPost.Modules.Deliveries.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
