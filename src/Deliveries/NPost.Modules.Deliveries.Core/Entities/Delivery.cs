@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using NPost.Modules.Deliveries.Core.Events;
 
 namespace NPost.Modules.Deliveries.Core.Entities
 {
@@ -27,19 +25,6 @@ namespace NPost.Modules.Deliveries.Core.Entities
             Status = status;
         }
 
-        public void Start()
-        {
-            TryChangeStatus(Status.Started, () => true);
-        }
-
-        public void Complete() => TryChangeStatus(Status.Completed, () => Status == Status.Started);
-
-        public void Cancel(string reason)
-        {
-            TryChangeStatus(Status.Canceled, () => Status == Status.Started);
-            Notes = reason ?? string.Empty;
-        }
-
         private void TryChangeStatus(Status status, Func<bool> validator)
         {
             if (!validator())
@@ -48,7 +33,6 @@ namespace NPost.Modules.Deliveries.Core.Entities
             }
 
             Status = status;
-            AddEvent(new DeliveryStatusChanged(this));
         }
     }
 }

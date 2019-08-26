@@ -35,7 +35,6 @@ namespace NPost
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseDeliveriesModule();
             app.UseParcelsModule();
             app.UseRoutingModule();

@@ -24,13 +24,12 @@ namespace NPost.Modules.Users.Controllers
         [HttpGet("_meta")]
         public ActionResult<string> Meta() => "Users module";
 
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("me")]
         public async Task<ActionResult<UserDto>> Me()
         {
-            var account = await _dispatcher.QueryAsync(new GetAccount(Guid.Parse(User.Identity.Name)));
+            await Task.CompletedTask;
 
-            return Ok(account);
+            return Ok();
         }
 
         [HttpPost("sign-up")]

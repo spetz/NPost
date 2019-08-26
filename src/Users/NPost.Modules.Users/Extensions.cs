@@ -44,7 +44,6 @@ namespace NPost.Modules.Users
                 });
             services.AddSingleton<IJwtProvider, JwtProvider>();
             services.AddSingleton<IPasswordHasher<IPasswordService>, PasswordHasher<IPasswordService>>();
-            services.AddSingleton<IPasswordService, PasswordService>();
             services.AddSingleton<IUsersRepository, InMemoryUsersRepository>();
             
             return new Module(typeof(UsersApiController).Assembly, "NPost.Modules.Users");

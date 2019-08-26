@@ -1,4 +1,3 @@
-using System;
 using NPost.Modules.Deliveries.Core.Entities;
 
 namespace NPost.Modules.Deliveries.Infrastructure.EF.Models

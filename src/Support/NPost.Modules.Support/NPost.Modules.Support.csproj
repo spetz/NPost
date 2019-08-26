@@ -27,15 +27,5 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Pages" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Include="Pages\Components\Support\Default.cshtml">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
-    </ItemGroup>
     
 </Project>
