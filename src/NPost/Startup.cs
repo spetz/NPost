@@ -34,7 +34,9 @@ namespace NPost
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
+            app.UseErrorHandler();
+            app.UseStaticFiles();
             app.UseDeliveriesModule();
             app.UseParcelsModule();
             app.UseRoutingModule();

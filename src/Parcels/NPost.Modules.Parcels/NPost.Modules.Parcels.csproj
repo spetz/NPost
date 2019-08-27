@@ -25,4 +25,15 @@
     <None Remove="Pages\Parcels.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Views\Parcels\Index.cshtml" />
+    <EmbeddedResource Include="Views\Parcels\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Remove="Pages\Components\Parcels\Default.cshtml" />
+    <EmbeddedResource Include="Pages\Components\Parcels\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

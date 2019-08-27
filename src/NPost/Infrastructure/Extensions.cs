@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -79,7 +80,16 @@ namespace NPost.Infrastructure
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 
+            services.AddTransient<ErrorHandlerMiddleware>();
+
             return services;
+        }
+        
+        public static IApplicationBuilder UseErrorHandler(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<ErrorHandlerMiddleware>();
+
+            return app;
         }
     }
 }
