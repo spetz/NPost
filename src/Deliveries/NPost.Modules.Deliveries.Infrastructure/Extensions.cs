@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using NPost.Modules.Deliveries.Application.Services;
 using NPost.Modules.Deliveries.Core.Repositories;
+using NPost.Modules.Deliveries.Infrastructure.EF;
+using NPost.Modules.Deliveries.Infrastructure.EF.Repositories;
 using NPost.Modules.Deliveries.Infrastructure.InMemory.Repositories;
 using NPost.Modules.Deliveries.Infrastructure.Services;
 
@@ -19,6 +21,10 @@ namespace NPost.Modules.Deliveries.Infrastructure
             services.AddSingleton<IDeliveriesRepository, InMemoryDeliveriesRepository>();
             services.AddSingleton<IParcelsRepository, InMemoryParcelsRepository>();
             services.AddSingleton<IDeliveriesDtoStorage, DeliveriesDtoStorage>();
+            
+            services.AddDbContext<DeliveriesDbContext>();
+            services.AddTransient<IDeliveriesRepository, EfDeliveriesRepository>();
+            services.AddTransient<IParcelsRepository, EfParcelsRepository>();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             services.Scan(s => s.FromAssemblies(assemblies)

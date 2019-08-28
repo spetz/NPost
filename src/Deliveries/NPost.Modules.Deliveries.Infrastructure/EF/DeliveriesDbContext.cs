@@ -18,7 +18,7 @@ namespace NPost.Modules.Deliveries.Infrastructure.EF
         {
             _options = options;
         }
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured)
