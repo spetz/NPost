@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace NPost.Modules.Deliveries.Shared.DTO
 {
@@ -6,5 +7,7 @@ namespace NPost.Modules.Deliveries.Shared.DTO
     {
         public Guid Id { get; set; }
         public string Status { get; set; }
+        public IEnumerable<ParcelDto> Parcels { get; set; }
+        public RouteDto Route { get; set; }
     }
 }

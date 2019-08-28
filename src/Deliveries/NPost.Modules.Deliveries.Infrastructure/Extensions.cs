@@ -18,6 +18,7 @@ namespace NPost.Modules.Deliveries.Infrastructure
             services.AddTransient<IRoutingServiceClient, RoutingServiceClient>();
             services.AddSingleton<IDeliveriesRepository, InMemoryDeliveriesRepository>();
             services.AddSingleton<IParcelsRepository, InMemoryParcelsRepository>();
+            services.AddSingleton<IDeliveriesDtoStorage, DeliveriesDtoStorage>();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             services.Scan(s => s.FromAssemblies(assemblies)
